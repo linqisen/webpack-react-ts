@@ -29,7 +29,7 @@ module.exports = {
                         options: {
                             presets: [
                                 [
-                                    "@bable/preset-env",
+                                    "@babel/preset-env",
                                     {
                                         corejs: { version: 3 },
                                         useBuiltIns: "usage",
@@ -75,7 +75,7 @@ module.exports = {
         }),
         // new ProgressBarPlugin({
         //     format: `  :msg [:bar] ${chalk.green.bold(
-        //         ":precent"
+        //         ":percent"
         //     )} (:elapsed s)`,
         // }),
     ],

@@ -25,7 +25,15 @@ module.exports = merge(common, {
                 test: /\.(css|scss|sass)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                auto: true,
+                                localIdentName: "[hash:base64:8]",
+                            },
+                        },
+                    },
                     {
                         loader: "postcss-loader",
                         options: {
@@ -37,6 +45,23 @@ module.exports = merge(common, {
                     "sass-loader",
                 ],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [["autoprefixer"]],
+                            },
+                        },
+                    },
+                    "less-loader",
+                ],
+                include: /node_modules/,
             },
         ],
     },
